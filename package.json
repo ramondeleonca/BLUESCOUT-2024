@@ -11,6 +11,7 @@
     "expo": "^50.0.4",
     "expo-barcode-scanner": "^12.9.2",
     "expo-brightness": "^11.8.0",
+    "expo-camera": "^14.0.5",
     "expo-file-system": "^16.0.5",
     "expo-keep-awake": "^12.8.2",
     "expo-media-library": "^15.9.1",
@@ -37,12 +38,14 @@
     "react-native-web": "^0.19.10",
     "react-use": "^17.5.0",
     "sync-storage": "^0.4.2",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "expo-haptics": "~12.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@types/react": "~18.2.14",
     "@types/react-native": "~0.70.6",
+    "@types/sync-storage": "^0.4.3",
     "typescript": "^5.3.3"
   },
   "scripts": {

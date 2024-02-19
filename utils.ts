@@ -1,6 +1,8 @@
 import * as FileSystem from 'expo-file-system';
 import { DATA_FOLDER, MATCH_SCOUT_FOLDER, ROBOT_SCOUT_FOLDER } from './constants';
 import { MatchScoutFormResult, RobotScoutFormResult } from './types';
+import { Dispatch, SetStateAction } from 'react';
+import SyncStorage from 'sync-storage';
 
 /**
  * Scaffold the data directories if they don't exist
@@ -99,3 +101,16 @@ export const deleteAllRobotScouts = async () => await deleteAllFiles(ROBOT_SCOUT
  * @returns
  */
 export const deleteAllMatchScouts = async () => await deleteAllFiles(MATCH_SCOUT_FOLDER);
+
+/**
+ * Returns a state setter given a state setter, state will be saved to memory (AsyncStorage)
+ * @param key 
+ * @param stateSetter 
+ * @returns 
+ */
+export const createPersistentState = <T>(key: string, stateSetter: Dispatch<SetStateAction<T>>) => {
+    return (state: T) => {
+        stateSetter(state);
+        SyncStorage.set(key, state);
+    }
+}

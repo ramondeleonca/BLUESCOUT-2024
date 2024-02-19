@@ -5,11 +5,11 @@ import robot from "./forms/2023/robot";
 import { z } from "zod";
 
 // Server syncing type definitions
-const AssignedScoutBase = z.object({ team: z.number() });
-const AssignedMatchScout = AssignedScoutBase.extend({ time: z.number(), match: z.number(), position: z.number().optional() });
-const AssignedRobotScout = AssignedScoutBase.extend({ division: z.string().optional() });
+export const AssignedScoutBase = z.object({ team: z.number() });
+export const AssignedMatchScout = AssignedScoutBase.extend({ time: z.number(), match: z.number(), position: z.number().optional() });
+export const AssignedRobotScout = AssignedScoutBase.extend({ division: z.string().optional() });
 
-const ServerSyncObject = z.object({
+export const ServerSyncObject = z.object({
     assignedMatchScouts: z.array(AssignedMatchScout).optional(),
     assignedRobotScouts: z.array(AssignedRobotScout).optional(),
     expires: z.number().optional(),

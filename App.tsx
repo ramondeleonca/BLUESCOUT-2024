@@ -20,7 +20,7 @@ export default function App() {
 
               {/* App navigation */}
               <NativeStackAppNavigation.Navigator id="AppNavigation">
-                  <NativeStackAppNavigation.Screen name="Main" component={Main} options={{ title: "Home" }}></NativeStackAppNavigation.Screen>
+                  <NativeStackAppNavigation.Screen name="Main" component={Main} options={{ headerShown: false }}></NativeStackAppNavigation.Screen>
                   <NativeStackAppNavigation.Screen name="Sync" component={Sync}></NativeStackAppNavigation.Screen>
               </NativeStackAppNavigation.Navigator>
 

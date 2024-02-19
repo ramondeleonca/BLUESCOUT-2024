@@ -1,25 +1,23 @@
+import { z } from "zod";
 import { Dispatch, SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import SyncStorage from "sync-storage";
+import { ServerSyncObject } from "../types";
+import { createPersistentState } from "../utils";
 
 export type AppContextType = {
-    scouterName: string;
-    setScouterName: (name: string) => void;
+    serverSyncData: z.infer<typeof ServerSyncObject> | null,
+    setServerSyncData: (data: z.infer<typeof ServerSyncObject> | null) => void
 }
 const AppContext = createContext<AppContextType | null>(null);
 
 export type AppContextProviderProps = { children?: any }
 export default function AppContextProvider(props: AppContextProviderProps) {
-    const [scouterName, __setScouterName] = useState(SyncStorage.get("scouterName") ?? "Scouter");
-
-    const setScouterName = (name: string) => {
-        SyncStorage.set("scouterName", name);
-        __setScouterName(name);
-    }
+    const [serverSyncData, __setServerSyncData] = useState<z.infer<typeof ServerSyncObject> | null>(null);
 
     return (
         <AppContext.Provider value={{
-            scouterName,
-            setScouterName
+            serverSyncData: serverSyncData,
+            setServerSyncData: createPersistentState("serverSyncData", __setServerSyncData)
         }}>
             {props.children}
         </AppContext.Provider>

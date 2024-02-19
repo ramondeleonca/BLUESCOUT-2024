@@ -12,19 +12,18 @@ import Results from '../Results';
 export default function Main({ navigation }: { navigation: NativeStackNavigationProp<any, any, any> }) {
     const ctx = useAppContext();
 
-    const validServerSyncData = true;
+    const validServerSyncData = false;
 
-    const MainMaterialBottomTabsNavigator = createMaterialBottomTabNavigator();
+    const MainNavigation = createMaterialBottomTabNavigator();
     
     return (
         validServerSyncData ? <>
-            <MainMaterialBottomTabsNavigator.Navigator id="MainNavigation">
-                <MainMaterialBottomTabsNavigator.Screen name="Home" component={Home} options={{ tabBarIcon: "home" }}></MainMaterialBottomTabsNavigator.Screen>
-                <MainMaterialBottomTabsNavigator.Screen name="Robot" component={RobotScouts} options={{ tabBarIcon: "robot" }}></MainMaterialBottomTabsNavigator.Screen>
-                <MainMaterialBottomTabsNavigator.Screen name="Match" component={MatchScouts} options={{ tabBarIcon: "strategy" }}></MainMaterialBottomTabsNavigator.Screen>
-                <MainMaterialBottomTabsNavigator.Screen name="Results" component={Results} options={{ tabBarIcon: "chart-timeline-variant" }}></MainMaterialBottomTabsNavigator.Screen>
-                
-            </MainMaterialBottomTabsNavigator.Navigator>
+            <MainNavigation.Navigator id="MainNavigation">
+                <MainNavigation.Screen name="Home" component={Home} options={{ tabBarIcon: "home" }}></MainNavigation.Screen>
+                <MainNavigation.Screen name="Robot" component={RobotScouts} options={{ tabBarIcon: "robot" }}></MainNavigation.Screen>
+                <MainNavigation.Screen name="Match" component={MatchScouts} options={{ tabBarIcon: "strategy" }}></MainNavigation.Screen>
+                <MainNavigation.Screen name="Results" component={Results} options={{ tabBarIcon: "chart-timeline-variant" }}></MainNavigation.Screen>
+            </MainNavigation.Navigator>
         </> : <>
             <View style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <Image source={require("./../../assets/Ignito-1024x1024.png")} style={{ position: "absolute", zIndex: -1, opacity: 0.15, width: "75%", height: "auto", aspectRatio: 1 }}></Image>
