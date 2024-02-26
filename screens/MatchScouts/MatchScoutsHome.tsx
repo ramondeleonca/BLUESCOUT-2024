@@ -41,14 +41,16 @@ export default function MatchScoutsHome({ navigation, route }: { navigation: Nat
             {
                 // No match scouts
                 matchScouts.length < 1 ? <>
-                    <View style={{flex: 1, alignItems: "center", justifyContent: "center", zIndex: -1, opacity: 0.5, flexDirection: "column"}}>
-                        <Image source={require("./../../assets/no-scouts.png")} style={{objectFit: "cover", width: 256, height: 256, borderRadius: 20}}></Image>
-                    </View>
+                    <ScrollView contentContainerStyle={{height: "100%", width: "100%", display: "flex", alignItems: "center"}}  refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getResults}></RefreshControl>}>
+                        <View style={{flex: 1, alignItems: "center", justifyContent: "center", zIndex: -1, opacity: 0.5, flexDirection: "column"}}>
+                            <Image source={require("./../../assets/no-scouts.png")} style={{objectFit: "cover", width: 256, height: 256, borderRadius: 20}}></Image>
+                        </View>
 
-                    <View style={{flex: 1, alignItems: "center", justifyContent: "center", zIndex: 1, flexDirection: "column"}}>
-                        <Text>Check in with the scouting leader or</Text>
-                        <Button style={{marginTop: 5}} onPress={() => navigation.navigate("NewMatchScout")} mode="contained" icon="strategy">Create a new match scout</Button>
-                    </View>
+                        <View style={{flex: 1, alignItems: "center", justifyContent: "center", zIndex: 1, flexDirection: "column"}}>
+                            <Text>Check in with the scouting leader or</Text>
+                            <Button style={{marginTop: 5}} onPress={() => navigation.navigate("NewMatchScout")} mode="contained" icon="strategy">Create a new match scout</Button>
+                        </View>
+                    </ScrollView>
                 </> :
 
                 // Match scouts
@@ -64,7 +66,7 @@ export default function MatchScoutsHome({ navigation, route }: { navigation: Nat
                         </View>
                     </View>
 
-                    <ScrollView style={{zIndex: 1}} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getResults}></RefreshControl>}>
+                    <ScrollView style={{zIndex: 1, width: "100%"}} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getResults}></RefreshControl>}>
                         {
                             matchScouts.map((scout, i) => (
                                 <Button key={i} onPress={() => navigation.navigate("MatchScout", {scout})} mode="contained" icon="strategy" style={{margin: 10, zIndex: 1}}>{scout.teamNumber} - {scout.matchNumber}</Button>

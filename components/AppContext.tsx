@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { Dispatch, SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import SyncStorage from "sync-storage";
-import { ServerSyncObject } from "../types";
-import { createPersistentState } from "../utils";
+import { ServerSyncObject } from '../types';
+import usePersistentState from "../hooks/usePersistentState";
 
 export type AppContextType = {
     serverSyncData: z.infer<typeof ServerSyncObject> | null,
@@ -12,12 +12,12 @@ const AppContext = createContext<AppContextType | null>(null);
 
 export type AppContextProviderProps = { children?: any }
 export default function AppContextProvider(props: AppContextProviderProps) {
-    const [serverSyncData, __setServerSyncData] = useState<z.infer<typeof ServerSyncObject> | null>(null);
+    const [serverSyncData, setServerSyncData] = usePersistentState<z.infer<typeof ServerSyncObject>>("serverSyncData", {expires: 0});
 
     return (
         <AppContext.Provider value={{
-            serverSyncData: serverSyncData,
-            setServerSyncData: createPersistentState("serverSyncData", __setServerSyncData)
+            serverSyncData,
+            setServerSyncData
         }}>
             {props.children}
         </AppContext.Provider>

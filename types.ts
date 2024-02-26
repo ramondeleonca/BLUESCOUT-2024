@@ -1,7 +1,7 @@
 import { FieldValues } from "react-hook-form";
 import { FormBuilderProps } from "react-native-paper-form-builder/dist/Types/Types";
-import match from "./forms/2023/match";
-import robot from "./forms/2023/robot";
+import match from "./forms/2024/match";
+import robot from "./forms/2024/robot";
 import { z } from "zod";
 
 // Server syncing type definitions

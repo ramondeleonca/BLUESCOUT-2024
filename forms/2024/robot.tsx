@@ -1,4 +1,5 @@
 import { IForm } from "../../types";
+import { saveRobotScout } from "../../utils";
 
 export default {
     questions: [
@@ -32,9 +33,38 @@ export default {
                 label: "Robot Name",
                 mode: "outlined"
             }
-        }
+        },
+
+        [
+            {
+                name: "intake",
+                type: "select",
+                options: [
+                    {label: "None", value: "none"},
+                    {label: "Ground", value: "ground"},
+                    {label: "Source", value: "source"},
+                    {label: "Both", value: "both"},
+                ],
+                textInputProps: {
+                    label: "Intake type"
+                }
+            },
+
+            {
+                name: "shooter",
+                type: "select",
+                options: [
+                    {label: "None", value: "none"},
+                    
+                ],
+                textInputProps: {
+                    label: "Shooter type"
+                }
+            }
+        ]
     ],
     onSubmit: (data: any) => {
+        saveRobotScout(data);
         console.log(data);
     }
 } satisfies IForm;

@@ -101,16 +101,3 @@ export const deleteAllRobotScouts = async () => await deleteAllFiles(ROBOT_SCOUT
  * @returns
  */
 export const deleteAllMatchScouts = async () => await deleteAllFiles(MATCH_SCOUT_FOLDER);
-
-/**
- * Returns a state setter given a state setter, state will be saved to memory (AsyncStorage)
- * @param key 
- * @param stateSetter 
- * @returns 
- */
-export const createPersistentState = <T>(key: string, stateSetter: Dispatch<SetStateAction<T>>) => {
-    return (state: T) => {
-        stateSetter(state);
-        SyncStorage.set(key, state);
-    }
-}

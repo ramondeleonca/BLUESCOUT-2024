@@ -12,12 +12,10 @@ import Results from '../Results';
 export default function Main({ navigation }: { navigation: NativeStackNavigationProp<any, any, any> }) {
     const ctx = useAppContext();
 
-    const validServerSyncData = false;
-
     const MainNavigation = createMaterialBottomTabNavigator();
     
     return (
-        validServerSyncData ? <>
+        ctx.serverSyncData.expires > Date.now() ? <>
             <MainNavigation.Navigator id="MainNavigation">
                 <MainNavigation.Screen name="Home" component={Home} options={{ tabBarIcon: "home" }}></MainNavigation.Screen>
                 <MainNavigation.Screen name="Robot" component={RobotScouts} options={{ tabBarIcon: "robot" }}></MainNavigation.Screen>

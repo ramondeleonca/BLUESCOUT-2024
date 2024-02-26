@@ -13,6 +13,7 @@
     "expo-brightness": "^11.8.0",
     "expo-camera": "^14.0.5",
     "expo-file-system": "^16.0.5",
+    "expo-haptics": "~12.8.1",
     "expo-keep-awake": "^12.8.2",
     "expo-media-library": "^15.9.1",
     "expo-notifications": "^0.27.6",
@@ -38,11 +39,11 @@
     "react-native-web": "^0.19.10",
     "react-use": "^17.5.0",
     "sync-storage": "^0.4.2",
-    "zod": "^3.22.4",
-    "expo-haptics": "~12.8.1"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@types/papaparse": "^5.3.14",
     "@types/react": "~18.2.14",
     "@types/react-native": "~0.70.6",
     "@types/sync-storage": "^0.4.3",
